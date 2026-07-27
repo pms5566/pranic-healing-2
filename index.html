@@ -2017,18 +2017,26 @@
         top: calc(var(--urgency-bar-height) + var(--header-height));
         left: 0;
         width: 100%;
-        background-color: var(--bg-warm);
+        height: calc(100vh - var(--urgency-bar-height) - var(--header-height));
+        background: linear-gradient(180deg, rgba(39, 20, 75, 0.98), rgba(26, 12, 52, 0.99));
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
         flex-direction: column;
+        justify-content: flex-start;
         gap: 0;
-        box-shadow: var(--shadow-md);
+        padding: 1.5rem 1.2rem 2.5rem 1.2rem;
+        box-shadow: var(--shadow-lg);
         border-bottom: 2px solid var(--accent);
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
         transition: var(--transition);
+        overflow-y: auto;
+        z-index: 1000;
       }
       .header.scrolled .nav-links {
         top: var(--header-height);
+        height: calc(100vh - var(--header-height));
       }
       .nav-links.active {
         opacity: 1;
@@ -2037,12 +2045,61 @@
       }
       .nav-links li {
         width: 100%;
-        text-align: center;
+        text-align: left;
       }
       .nav-links a {
-        display: block;
-        padding: 1.1rem;
-        border-bottom: 1px solid rgba(var(--primary-rgb), 0.04);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 0.5rem;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #ffffff !important;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      }
+      .menu-quiz-banner {
+        background: linear-gradient(135deg, rgba(201, 168, 76, 0.2), rgba(201, 168, 76, 0.05));
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 12px;
+        padding: 12px 16px;
+        font-size: 0.88rem;
+        font-weight: 700;
+        margin: 1.2rem 0;
+        text-align: center;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .menu-desk-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
+      }
+      .menu-desk-btn {
+        flex: 1;
+        min-height: 44px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 0.85rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+      .menu-desk-btn.call {
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+      }
+      .menu-desk-btn.wa {
+        background: #25d366;
+        color: #ffffff;
+        border: none;
       }
 
       .courses-grid {
@@ -2485,11 +2542,25 @@
       </a>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#success">Success Stories</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" onclick="toggleMenu()"><span>Home</span> <span>&rarr;</span></a></li>
+        <li><a href="#about" onclick="toggleMenu()"><span>About</span> <span>&rarr;</span></a></li>
+        <li><a href="#courses" onclick="toggleMenu()"><span>Courses</span> <span>&rarr;</span></a></li>
+        <li><a href="#success" onclick="toggleMenu()"><span>Success Stories</span> <span>&rarr;</span></a></li>
+        <li><a href="#resources" onclick="toggleMenu()"><span>Free Resources</span> <span>&rarr;</span></a></li>
+        <li><a href="#contact" onclick="toggleMenu()"><span>Contact Desk</span> <span>&rarr;</span></a></li>
+        
+        <li style="width: 100%;">
+          <div class="menu-quiz-banner" onclick="toggleMenu(); openLevelQuizModal();">
+            ✨ Not Sure? Take 15-Sec Level Quiz &rarr;
+          </div>
+        </li>
+
+        <li style="width: 100%; margin-top: auto;">
+          <div class="menu-desk-row">
+            <button type="button" class="menu-desk-btn call" onclick="toggleMenu(); window.location.href='tel:+919876543210';">📞 Call Desk</button>
+            <button type="button" class="menu-desk-btn wa" onclick="toggleMenu(); submitToWhatsApp();">💬 WhatsApp Desk</button>
+          </div>
+        </li>
       </ul>
 
       <div class="nav-actions" style="display: flex; align-items: center;">
