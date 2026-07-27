@@ -1884,9 +1884,46 @@
       .resources-grid {
         grid-template-columns: 1fr;
       }
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
+    .footer-accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      cursor: pointer;
+    }
+    .payment-trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 10px;
+      margin-top: 12px;
+    }
+
+    .accordion-icon {
+      display: none;
+    }
+
+    /* 3. Mobile Devices (320px to 768px) */
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 130px !important;
+      }
+      .mobile-bottom-nav {
+        display: flex;
+        z-index: 1000;
+      }
+      .mobile-sticky-cta {
+        display: flex;
+        bottom: 56px !important;
+        z-index: 999;
+      }
+      .floating-whatsapp {
+        bottom: 125px !important;
+        right: 16px !important;
+        z-index: 1001 !important;
+      }
+
+      .filter-chips-wrapper {
+        justify-content: flex-start;
       }
 
       .accordion-icon {
@@ -1897,15 +1934,26 @@
         max-height: 20px !important;
         fill: var(--accent) !important;
         flex-shrink: 0;
+        margin-left: 8px;
+      }
+      .footer-accordion-header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding: 4px 0;
       }
       .footer-links-col h4, .footer-about h4, .footer-social-col h4, .footer-grievance h4 {
         margin-bottom: 0;
       }
-      .footer-links-col ul, .footer-about p, .grievance-box {
+      .footer-links-col ul, .footer-about p, .grievance-box, .payment-trust-badges {
         display: none;
         padding-top: 10px;
       }
-      .footer-links-col.open ul, .footer-about.open p, .footer-grievance.open .grievance-box {
+      .footer-links-col.open ul, .footer-about.open p, .footer-about.open .payment-trust-badges, .footer-grievance.open .grievance-box {
+        display: flex;
+      }
+      .footer-about.open p {
         display: block;
       }
       .footer-links-col.open .accordion-icon, .footer-grievance.open .accordion-icon, .footer-about.open .accordion-icon {
