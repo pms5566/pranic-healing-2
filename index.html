@@ -1848,6 +1848,13 @@
         padding: 0.5rem 0;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+      }
+      .testimonials-grid::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
       }
       .testimonial-card {
         flex: 0 0 290px;
