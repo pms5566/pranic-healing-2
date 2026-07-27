@@ -1158,23 +1158,164 @@
       opacity: 1;
       visibility: visible;
     }
+    /* Modern Luxury Cart Drawer System */
     .cart-drawer {
       position: fixed;
       top: 0;
       right: 0;
       width: 100%;
-      max-width: 440px;
+      max-width: 460px;
       height: 100%;
       background: var(--bg-warm);
-      box-shadow: -5px 0 25px rgba(0,0,0,0.2);
+      box-shadow: -10px 0 35px rgba(0,0,0,0.3);
       z-index: 2001;
       transform: translateX(100%);
       transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       flex-direction: column;
     }
-    .drawer-overlay.active .cart-drawer {
-      transform: translateX(0);
+    .drawer-header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #ffffff;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--accent);
+    }
+    .drawer-header h3 {
+      color: #ffffff !important;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .drawer-close {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+    .drawer-close:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+    .cart-stepper-bar {
+      background: rgba(39, 20, 75, 0.95);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 8px 1.5rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    .stepper-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .stepper-step.active {
+      color: var(--accent);
+    }
+    .drawer-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+    .checkout-course-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 1.2rem;
+      border: 1px solid rgba(59, 31, 110, 0.12);
+      box-shadow: 0 4px 15px rgba(59, 31, 110, 0.05);
+      margin-bottom: 1.2rem;
+    }
+    .receipt-box {
+      background: var(--bg-warm);
+      border: 1.5px dashed rgba(59, 31, 110, 0.2);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.86rem;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+    .receipt-row.total {
+      border-top: 1.5px dashed rgba(59, 31, 110, 0.2);
+      padding-top: 8px;
+      margin-top: 8px;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .coupon-box {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .coupon-box input {
+      flex-grow: 1;
+      padding: 10px 14px;
+      border: 1.5px solid rgba(59, 31, 110, 0.18);
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .coupon-box button {
+      background: var(--primary);
+      color: var(--accent);
+      border: none;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .coupon-box button:hover {
+      background: var(--primary-light);
+    }
+    .payment-options-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .payment-opt-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(59, 31, 110, 0.15);
+      border-radius: 12px;
+      padding: 12px 10px;
+      text-align: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .payment-opt-card.selected {
+      border: 2px solid var(--accent) !important;
+      background: rgba(201, 168, 76, 0.1) !important;
+      color: var(--primary-dark) !important;
+      box-shadow: 0 4px 12px rgba(201, 168, 76, 0.2) !important;
     }
 
     /* Cart Drawer Enhancements */
@@ -3284,55 +3425,68 @@
         <button class="drawer-close" onclick="closeCartDrawer(event)">&times;</button>
       </div>
 
+      <!-- Checkout Stepper Bar -->
+      <div class="cart-stepper-bar">
+        <span class="stepper-step active">1. Cart Items (Active)</span>
+        <span>➔</span>
+        <span class="stepper-step">2. Student Info</span>
+        <span>➔</span>
+        <span class="stepper-step">3. Payment</span>
+      </div>
+
       <div class="drawer-body">
-        <div class="checkout-course-summary">
+        <!-- Selected Course Summary Card -->
+        <div class="checkout-course-card">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
             <div>
-              <h4 id="drawerCourseName" style="color: var(--primary); font-size: 1.15rem; margin-bottom: 2px;">Basic Pranic Healing</h4>
+              <h4 id="drawerCourseName" style="color: var(--primary); font-size: 1.2rem; margin-bottom: 4px; font-weight: 700;">Basic Pranic Healing</h4>
               <span class="batch-date-pill">📅 Next Cohort: Aug 5 - Aug 7, 2026</span>
             </div>
             <span class="savings-badge-pill" id="drawerSavingsPill">🎉 You Save ₹2,000</span>
           </div>
 
-          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">Includes IIS Certification, live webinar access & physical study guide kit.</p>
-          
-          <div class="price-breakdown">
-            <div class="price-row">
+          <p style="font-size: 0.83rem; color: var(--text-muted); margin-top: 8px; line-height: 1.4;">
+            ✔ Official IIS Certification &nbsp;•&nbsp; ✔ Live Webinar &nbsp;•&nbsp; ✔ Study Kit
+          </p>
+
+          <!-- Dotted Receipt Itemization Box -->
+          <div class="receipt-box">
+            <div class="receipt-row">
               <span>Standard Course Fee (MRP)</span>
               <span id="drawerMrp">₹6,999</span>
             </div>
-            <div class="price-row" style="color: #27ae60;">
+            <div class="receipt-row" style="color: #27ae60; font-weight: 600;">
               <span>Instant Early Bird Discount</span>
               <span id="drawerDiscount">- ₹2,000</span>
             </div>
-            <div class="price-row" id="couponRow" style="color: #e67e22; display: none;">
+            <div class="receipt-row" id="couponRow" style="color: #e67e22; font-weight: 600; display: none;">
               <span>Promo Code (HEAL2026)</span>
               <span id="couponDiscount">- ₹1,000</span>
             </div>
-            <div class="price-row total">
-              <span>Total Payable Fee</span>
-              <span id="drawerFinalTotal">₹4,999</span>
+            <div class="receipt-row total">
+              <span>Final Payable Amount</span>
+              <span id="drawerFinalTotal" style="color: var(--primary-dark); font-size: 1.2rem;">₹4,999</span>
             </div>
           </div>
         </div>
 
         <!-- 1-Tap Coupon Code Chips -->
-        <label style="font-size: 0.8rem; font-weight: 700; color: var(--primary); display: block; margin-top: 10px;">Available Promo Coupons:</label>
+        <label style="font-size: 0.82rem; font-weight: 700; color: var(--primary); display: block; margin-top: 10px;">Available Promo Coupons:</label>
         <div class="coupon-chips-row">
-          <span class="coupon-chip" onclick="applyCouponChip('HEAL2026')">🏷️ HEAL2026 (-₹1,000)</span>
-          <span class="coupon-chip" onclick="applyCouponChip('EARLY2026')">🏷️ EARLY2026 (-₹1,000)</span>
+          <span class="coupon-chip" onclick="applyCouponChip('HEAL2026')">🏷️ HEAL2026 (-₹1,000) [APPLY]</span>
+          <span class="coupon-chip" onclick="applyCouponChip('EARLY2026')">🏷️ EARLY2026 (-₹1,000) [APPLY]</span>
         </div>
 
         <div class="coupon-box">
           <input type="text" id="couponInput" placeholder="Enter Promo Code (e.g. HEAL2026)">
-          <button type="button" onclick="applyCoupon()">Apply</button>
+          <button type="button" onclick="applyCoupon()">Apply Code</button>
         </div>
-        <p id="couponMsg" style="font-size: 0.78rem; margin-bottom: 1rem; color: var(--success); display: none;">✓ Promo code HEAL2026 applied successfully!</p>
+        <p id="couponMsg" style="font-size: 0.78rem; margin-top: 6px; margin-bottom: 1rem; color: var(--success); display: none;">✓ Promo code HEAL2026 applied successfully!</p>
 
-        <h4 style="color: var(--primary); font-size: 0.95rem; margin-bottom: 8px;">Select Payment Gateway</h4>
+        <h4 style="color: var(--primary); font-size: 0.95rem; margin-top: 1.2rem; margin-bottom: 8px; font-weight: 700;">Select Payment Method</h4>
         <div class="payment-options-grid">
           <div class="payment-opt-card selected" onclick="selectPaymentOpt(this)">
-            <span>🇮🇳 UPI / GPay / PhonePe</span>
+            <span>⚡ UPI / GPay</span>
           </div>
           <div class="payment-opt-card" onclick="selectPaymentOpt(this)">
             <span>💳 Cards / NetBanking</span>
@@ -3341,15 +3495,15 @@
             <span>💼 Paytm / Wallets</span>
           </div>
           <div class="payment-opt-card" onclick="selectPaymentOpt(this)">
-            <span>📦 Pay Later / EMI</span>
+            <span>🏛️ EMI / Pay Later</span>
           </div>
         </div>
 
         <div class="cart-trust-box">
-          🛡️ 100% Money-Back Guarantee (7 Days) &nbsp;•&nbsp; 📜 Official IIS Certificate
+          🛡️ 100% Money-Back Guarantee (7 Days) &nbsp;•&nbsp; 🔒 256-Bit SSL Secure Checkout
         </div>
 
-        <h4 style="color: var(--primary); font-size: 0.95rem; margin-top: 0.8rem; margin-bottom: 8px;">Fast Student Registration</h4>
+        <h4 style="color: var(--primary); font-size: 0.95rem; margin-top: 0.8rem; margin-bottom: 8px; font-weight: 700;">Fast Student Registration</h4>
         <form id="drawerCheckoutForm" onsubmit="completeCheckout(event)">
           <div style="margin-bottom: 10px;">
             <input type="text" class="form-control" placeholder="Full Name" required autocomplete="name" style="width: 100%; padding: 10px 14px; border: 1.5px solid rgba(59, 31, 110, 0.15); border-radius: 8px;">
@@ -3362,10 +3516,10 @@
           </div>
 
           <div class="drawer-timer-banner">
-            ⏰ Offer Price Reserved for <span id="cartCountdownTimer">14:59</span>
+            ⏱️ Special Price Reserved for <span id="cartCountdownTimer">14:59</span>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 48px; font-size: 0.98rem; font-weight: 700;">🔒 Proceed to Secure Payment (<span id="btnPayNowAmount">₹4,999</span>) →</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 48px; font-size: 0.98rem; font-weight: 700; background: linear-gradient(135deg, var(--accent-hover), var(--accent));">🔒 Proceed to Express Checkout (<span id="btnPayNowAmount">₹4,999</span>) →</button>
         </form>
       </div>
     </div>
