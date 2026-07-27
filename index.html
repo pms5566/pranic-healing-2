@@ -782,39 +782,57 @@
     }
 
     /* Success Stories & Resources */
+    /* Success Stories Box View */
     .success-stories {
       background: var(--bg-white);
     }
     .stories-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
     }
     .story-card {
-      background: var(--bg-warm);
-      border-radius: var(--border-radius);
+      background: #ffffff;
+      border-radius: 16px;
       overflow: hidden;
       display: flex;
-      border: 1px solid rgba(59, 31, 110, 0.05);
+      flex-direction: column;
+      border: 1px solid rgba(59, 31, 110, 0.12);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
     }
-    .story-illustration {
-      flex: 0 0 140px;
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+    .story-card-header {
       background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: #ffffff;
+      padding: 1.2rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      color: var(--accent);
+      gap: 12px;
     }
-    .story-illustration svg {
-      width: 70px;
-      height: 70px;
-      fill: currentColor;
+    .story-card-header svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--accent);
+      flex-shrink: 0;
+    }
+    .story-card-header h3 {
+      color: #ffffff !important;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.3;
     }
     .story-body {
-      padding: 1.5rem;
+      padding: 1.2rem;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      flex-grow: 1;
     }
 
     .resources {
@@ -2239,13 +2257,47 @@
         position: relative;
       }
       .stories-grid {
-        grid-template-columns: 1fr;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem !important;
       }
       .story-card {
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+        border-radius: 12px !important;
       }
-      .story-illustration {
-        flex: 0 0 120px;
+      .story-card-header {
+        padding: 0.7rem 0.8rem !important;
+        gap: 8px !important;
+      }
+      .story-card-header h3 {
+        font-size: 0.85rem !important;
+        line-height: 1.25 !important;
+      }
+      .story-body {
+        padding: 0.7rem 0.8rem !important;
+      }
+      .story-body p {
+        font-size: 0.78rem !important;
+        line-height: 1.35 !important;
+        margin-bottom: 0.6rem !important;
+      }
+      .aura-comparison-container {
+        padding: 4px !important;
+        gap: 4px !important;
+        margin: 6px 0 !important;
+      }
+      .aura-diagram-graphic {
+        padding: 3px 6px !important;
+        font-size: 0.7rem !important;
+      }
+      .healing-metrics-row {
+        gap: 3px !important;
+      }
+      .metric-pill {
+        font-size: 0.68rem !important;
+        padding: 2px 5px !important;
       }
       .resources-grid {
         grid-template-columns: 1fr;
@@ -3092,22 +3144,14 @@
       </div>
 
       <div class="stories-grid">
-        <!-- Story 1 -->
+        <!-- Story 1 Box Card -->
         <div class="story-card reveal">
-          <div class="story-illustration">
-            <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 3" />
-              <path d="M50 15 C54 30 54 40 50 85 M46 15 C50 30 50 40 46 85" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6" />
-              <circle cx="48" cy="22" r="5" fill="#c9a84c" />
-              <circle cx="48" cy="35" r="5" fill="#c9a84c" />
-              <circle cx="48" cy="48" r="5" fill="#c9a84c" />
-              <circle cx="48" cy="62" r="5" fill="#c9a84c" />
-              <circle cx="48" cy="75" r="5" fill="#c9a84c" />
-            </svg>
+          <div class="story-card-header">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <h3>Chronic Back Pain Relief</h3>
           </div>
           <div class="story-body">
-            <h3>Reclaiming Mobility: How Pranic Healing Relieved Chronic Back Pain</h3>
-            <p>For a decade, chronic lower back pain dictated what I could and couldn't do. Through targeted advanced healing protocols, energy congestion was systematically cleansed.</p>
+            <p>Targeted energy cleansing relieved 10 years of lower back stiffness.</p>
             
             <div class="aura-comparison-container">
               <div class="aura-box before">
@@ -3121,27 +3165,22 @@
             </div>
 
             <div class="healing-metrics-row">
-              <span class="metric-pill">⏱️ 14 Days Recovery</span>
-              <span class="metric-pill">📉 90% Pain Reduction</span>
-              <span class="metric-pill">🌿 100% Non-Touch</span>
+              <span class="metric-pill">⏱️ 14 Days</span>
+              <span class="metric-pill">📉 90% Pain Relief</span>
             </div>
 
-            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;" onclick="event.preventDefault();">Read Full Case Study</a>
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 0.8rem; font-size: 0.82rem; min-height: 38px;" onclick="openVideoResourceModal('Reclaiming Mobility Case Study')">Read Case Study &rarr;</button>
           </div>
         </div>
 
-        <!-- Story 2 -->
+        <!-- Story 2 Box Card -->
         <div class="story-card reveal">
-          <div class="story-illustration">
-            <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 3" />
-              <path d="M35 70 C35 55 42 50 45 45 C42 43 40 40 40 35 C40 28 45 25 50 25 C55 25 60 28 60 35 C60 40 58 43 55 45 C58 50 65 55 65 70" fill="none" stroke="#ffffff" stroke-width="2" />
-              <path d="M50 38 C51 43 53 45 57 45 C53 45 51 47 50 52 C49 47 47 45 43 45 C47 45 49 43 50 38 Z" fill="#c9a84c" />
-            </svg>
+          <div class="story-card-header">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <h3>Emotional & Anxiety Recovery</h3>
           </div>
           <div class="story-body">
-            <h3>From Panic to Peace: A Journey of Emotional and Relational Healing</h3>
-            <p>Severe anxiety was destroying my personal and professional life. The psychological protocols and meditation alignment restored emotional balance.</p>
+            <p>Psychological protocols & chakra cleansing restored inner calm.</p>
             
             <div class="aura-comparison-container">
               <div class="aura-box before">
@@ -3155,11 +3194,11 @@
             </div>
 
             <div class="healing-metrics-row">
-              <span class="metric-pill">🧘 3 Weeks Alignment</span>
-              <span class="metric-pill">🛡️ Zero Anxiety Attacks</span>
+              <span class="metric-pill">🧘 3 Weeks</span>
+              <span class="metric-pill">🛡️ Zero Attacks</span>
             </div>
 
-            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;" onclick="event.preventDefault();">Read Full Case Study</a>
+            <button class="btn btn-secondary" style="width: 100%; margin-top: 0.8rem; font-size: 0.82rem; min-height: 38px;" onclick="openVideoResourceModal('Panic to Peace Case Study')">Read Case Study &rarr;</button>
           </div>
         </div>
       </div>
