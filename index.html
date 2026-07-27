@@ -3743,38 +3743,58 @@
     let cartTimerInterval = null;
 
     function openCartDrawer(courseName, price, mrp) {
-      activePrice = price;
-      activeMrp = mrp;
+      activePrice = price || 4999;
+      activeMrp = mrp || 6999;
       appliedCoupon = false;
 
-      const savings = Math.max(0, mrp - price);
-      document.getElementById('drawerCourseName').textContent = courseName;
-      document.getElementById('drawerMrp').textContent = '₹' + mrp.toLocaleString('en-IN');
-      document.getElementById('drawerDiscount').textContent = '- ₹' + savings.toLocaleString('en-IN');
-      document.getElementById('drawerFinalTotal').textContent = '₹' + price.toLocaleString('en-IN');
+      const savings = Math.max(0, activeMrp - activePrice);
+      
+      const drawerName = document.getElementById('drawerCourseName');
+      if (drawerName) drawerName.textContent = courseName || 'Basic Pranic Healing';
+
+      const drawerMrp = document.getElementById('drawerMrp');
+      if (drawerMrp) drawerMrp.textContent = '₹' + activeMrp.toLocaleString('en-IN');
+
+      const drawerDiscount = document.getElementById('drawerDiscount');
+      if (drawerDiscount) drawerDiscount.textContent = '- ₹' + savings.toLocaleString('en-IN');
+
+      const drawerFinal = document.getElementById('drawerFinalTotal');
+      if (drawerFinal) drawerFinal.textContent = '₹' + activePrice.toLocaleString('en-IN');
       
       const savingsPill = document.getElementById('drawerSavingsPill');
       if (savingsPill) savingsPill.textContent = `🎉 You Save ₹${savings.toLocaleString('en-IN')}`;
       
       const btnPayAmount = document.getElementById('btnPayNowAmount');
-      if (btnPayAmount) btnPayAmount.textContent = '₹' + price.toLocaleString('en-IN');
+      if (btnPayAmount) btnPayAmount.textContent = '₹' + activePrice.toLocaleString('en-IN');
 
-      document.getElementById('stickyCtaMrp').textContent = '₹' + mrp.toLocaleString('en-IN');
-      document.getElementById('stickyCtaPrice').textContent = '₹' + price.toLocaleString('en-IN');
+      const stickyMrp = document.getElementById('stickyCtaMrp');
+      if (stickyMrp) stickyMrp.textContent = '₹' + activeMrp.toLocaleString('en-IN');
 
-      document.getElementById('couponRow').style.display = 'none';
-      document.getElementById('couponMsg').style.display = 'none';
-      document.getElementById('couponInput').value = '';
+      const stickyPrice = document.getElementById('stickyCtaPrice');
+      if (stickyPrice) stickyPrice.textContent = '₹' + activePrice.toLocaleString('en-IN');
+
+      const couponRow = document.getElementById('couponRow');
+      if (couponRow) couponRow.style.display = 'none';
+
+      const couponMsg = document.getElementById('couponMsg');
+      if (couponMsg) couponMsg.style.display = 'none';
+
+      const couponInput = document.getElementById('couponInput');
+      if (couponInput) couponInput.value = '';
 
       startCartTimer();
 
-      document.getElementById('drawerOverlay').classList.add('active');
-      document.body.style.overflow = 'hidden';
+      const overlay = document.getElementById('drawerOverlay');
+      if (overlay) {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
     }
 
     function closeCartDrawer(e) {
-      if (e) e.preventDefault();
-      document.getElementById('drawerOverlay').classList.remove('active');
+      if (e && e.preventDefault) e.preventDefault();
+      const overlay = document.getElementById('drawerOverlay');
+      if (overlay) overlay.classList.remove('active');
       document.body.style.overflow = '';
       if (cartTimerInterval) clearInterval(cartTimerInterval);
     }
