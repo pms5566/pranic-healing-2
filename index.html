@@ -362,12 +362,12 @@
       color: var(--text-muted);
     }
 
-    /* Reveal animations */
+    /* Reveal animations (Fail-safe smooth reveal) */
     .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 0.1;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .reveal.revealed {
       opacity: 1;
@@ -1106,6 +1106,19 @@
     @media (min-width: 1441px) {
       .container {
         max-width: 1320px;
+      }
+    }
+
+    /* Desktop Footer & Content Overrides (> 768px) */
+    @media (min-width: 769px) {
+      .footer-links-col ul, .footer-links-grid {
+        display: grid !important;
+      }
+      .footer-about p, .grievance-box {
+        display: block !important;
+      }
+      .accordion-icon {
+        display: none !important;
       }
     }
 
@@ -2348,23 +2361,30 @@
       });
     });
 
-    // 8. Scroll Reveal Observer
+    // 8. Scroll Reveal Observer with Fail-safe Fallback
     const revealElements = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          observer.unobserve(entry.target);
-        }
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.01,
+        rootMargin: '100px 0px 100px 0px'
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
 
-    revealElements.forEach(el => {
-      revealObserver.observe(el);
-    });
+      revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('revealed'));
+    }
+
+    // Safety fallback timer to ensure lower sections (Resources, Contact, Footer) are always fully visible
+    setTimeout(() => {
+      revealElements.forEach(el => el.classList.add('revealed'));
+    }, 800);
 
     // Modal Close Trigger
     const closeModalBtn = document.getElementById('closeModalBtn');
