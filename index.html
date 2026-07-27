@@ -2599,7 +2599,7 @@
         <a href="#courses" class="btn btn-nav-enroll">Enroll Now</a>
       </div>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" onclick="toggleMenu(event)">
         <span></span>
         <span></span>
         <span></span>
@@ -3867,22 +3867,21 @@
 
   <script>
     // 1. Mobile Menu Toggle
+    function toggleMenu(e) {
+      if (e && e.stopPropagation) e.stopPropagation();
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      if (menuToggle && navLinks) {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      }
+    }
+
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
 
     if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
-
-      const navItems = navLinks.querySelectorAll('a');
-      navItems.forEach(item => {
-        item.addEventListener('click', () => {
-          menuToggle.classList.remove('active');
-          navLinks.classList.remove('active');
-        });
-      });
+      menuToggle.addEventListener('click', toggleMenu);
     }
 
     // 2. Header & Urgency Banner Scroll Effect
