@@ -1154,9 +1154,12 @@
       transition: opacity 0.35s ease, visibility 0.35s ease;
     }
     .drawer-overlay.active {
-      display: flex;
-      opacity: 1;
-      visibility: visible;
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .drawer-overlay.active .cart-drawer {
+      transform: translateX(0) !important;
     }
     /* Modern Luxury Cart Drawer System */
     .cart-drawer {
