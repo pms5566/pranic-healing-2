@@ -192,17 +192,18 @@
       overflow: hidden !important;
       height: var(--header-height);
       z-index: 1000;
-      background: rgba(250, 247, 242, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(var(--primary-rgb), 0.06);
+      background: linear-gradient(135deg, rgba(39, 20, 75, 0.95), rgba(59, 31, 110, 0.95));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease;
     }
 
     .header.scrolled {
       top: 0;
-      background: rgba(250, 247, 242, 0.98);
-      box-shadow: var(--shadow-sm);
+      background: linear-gradient(135deg, rgba(26, 12, 52, 0.98), rgba(39, 20, 75, 0.98));
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
     }
 
     .navbar {
@@ -217,15 +218,17 @@
       align-items: center;
       gap: 10px;
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      font-size: clamp(1.25rem, 2vw, 1.55rem);
       font-weight: 700;
-      color: var(--primary);
+      color: #ffffff !important;
+      letter-spacing: 0.3px;
     }
 
     .logo svg {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       fill: var(--accent);
+      filter: drop-shadow(0 2px 8px rgba(201, 168, 76, 0.4));
     }
 
     .nav-links {
@@ -237,9 +240,10 @@
 
     .nav-links a {
       font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text-main);
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9) !important;
       position: relative;
+      transition: var(--transition);
     }
 
     .nav-links a::after {
@@ -250,11 +254,12 @@
       width: 0;
       height: 2px;
       background-color: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
       transition: var(--transition);
     }
 
     .nav-links a:hover {
-      color: var(--primary);
+      color: var(--accent) !important;
     }
 
     .nav-links a:hover::after {
@@ -269,54 +274,64 @@
 
     .cart-header-btn {
       position: relative;
-      background: rgba(59, 31, 110, 0.08);
-      color: var(--primary);
-      border: 1px solid rgba(59, 31, 110, 0.15);
-      border-radius: 50%;
-      width: 44px;
-      height: 44px;
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 6px 14px;
+      height: 38px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
+      gap: 6px;
       cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: var(--transition);
+    }
+    .cart-header-btn:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
     }
     .cart-header-btn svg {
-      width: 22px;
-      height: 22px;
-      fill: var(--primary);
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
     .cart-count-badge {
-      position: absolute;
-      top: -4px;
-      right: -4px;
       background: #e74c3c;
       color: #fff;
       font-size: 0.68rem;
       font-weight: 700;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 1px 6px;
+      border-radius: 10px;
     }
 
     .btn-nav-enroll {
-      padding: 0.5rem 1.2rem;
-      font-size: 0.85rem;
-      border-radius: 8px;
-      background-color: var(--accent);
-      color: var(--primary);
-      font-weight: 600;
-      min-height: 40px;
+      padding: 0.5rem 1.4rem;
+      font-size: 0.88rem;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+      color: var(--primary-dark) !important;
+      font-weight: 700;
+      min-height: 38px;
+      border: none;
+      box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-nav-enroll:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(201, 168, 76, 0.5);
     }
 
     .menu-toggle {
       display: none;
       flex-direction: column;
       justify-content: space-between;
-      width: 30px;
-      height: 21px;
+      width: 28px;
+      height: 20px;
       background: transparent;
       border: none;
       cursor: pointer;
@@ -326,19 +341,19 @@
     .menu-toggle span {
       width: 100%;
       height: 3px;
-      background-color: var(--primary);
+      background-color: var(--accent);
       border-radius: 3px;
       transition: var(--transition);
     }
 
     .menu-toggle.active span:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
+      transform: translateY(8px) rotate(45deg);
     }
     .menu-toggle.active span:nth-child(2) {
       opacity: 0;
     }
     .menu-toggle.active span:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
+      transform: translateY(-8px) rotate(-45deg);
     }
 
     /* Sections Shared Styling */
@@ -2568,6 +2583,7 @@
           <svg viewBox="0 0 24 24">
             <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
           </svg>
+          <span>Cart</span>
           <span class="cart-count-badge" id="cartCountBadge">1</span>
         </button>
         <a href="#courses" class="btn btn-nav-enroll">Enroll Now</a>
