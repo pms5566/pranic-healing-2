@@ -1222,6 +1222,296 @@
       fill: currentColor;
     }
 
+    /* Course Urgency Bar */
+    .course-urgency-box {
+      margin: 0.8rem 0 1rem 0;
+      background: rgba(231, 76, 60, 0.08);
+      border: 1px solid rgba(231, 76, 60, 0.2);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .urgency-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #d63031;
+      margin-bottom: 4px;
+    }
+    .urgency-progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(231, 76, 60, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .urgency-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #e74c3c, #f39c12);
+      border-radius: 4px;
+    }
+
+    /* Course Syllabus Details Accordion */
+    .course-syllabus-details {
+      margin-bottom: 1.2rem;
+      border: 1px solid rgba(59, 31, 110, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--bg-warm);
+    }
+    .course-syllabus-details summary {
+      padding: 8px 12px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .course-syllabus-details summary::-webkit-details-marker {
+      display: none;
+    }
+    .course-syllabus-list {
+      padding: 8px 12px 10px 24px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(59, 31, 110, 0.08);
+      margin: 0;
+    }
+    .course-syllabus-list li {
+      margin-bottom: 4px;
+    }
+
+    /* Dual Course CTAs */
+    .course-actions-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .btn-quick-enroll {
+      flex: 1.2;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-size: 0.84rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: var(--transition);
+    }
+    .btn-quick-enroll:hover {
+      background: #b8953d;
+    }
+    .btn-view-syllabus {
+      flex: 1;
+      background: transparent;
+      color: var(--primary);
+      border: 1.5px solid var(--primary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .btn-view-syllabus:hover {
+      background: rgba(59, 31, 110, 0.06);
+    }
+
+    /* Testimonials Verified Badge & Audio Note */
+    .verified-student-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(46, 204, 113, 0.15);
+      color: #27ae60;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-top: 4px;
+    }
+    .audio-voice-box {
+      background: var(--bg-warm);
+      border: 1px solid rgba(59, 31, 110, 0.1);
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-play-audio {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--accent);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .audio-waveform-bars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 18px;
+      flex-grow: 1;
+    }
+    .waveform-bar {
+      width: 3px;
+      background: var(--primary-light);
+      border-radius: 2px;
+    }
+    .audio-duration-text {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Healing Stories Aura Comparison */
+    .aura-comparison-container {
+      background: var(--primary-dark);
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      text-align: center;
+    }
+    .aura-box span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .aura-box.before span { color: #e74c3c; }
+    .aura-box.after span { color: #2ecc71; }
+    .aura-diagram-graphic {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .aura-box.before .aura-diagram-graphic {
+      background: radial-gradient(circle, #7f8c8d 20%, #2c3e50 80%);
+      border: 2px dashed #95a5a6;
+    }
+    .aura-box.after .aura-diagram-graphic {
+      background: radial-gradient(circle, #f1c40f 20%, #3498db 70%, #9b59b6 100%);
+      border: 2px solid #f1c40f;
+      box-shadow: 0 0 15px rgba(241, 196, 15, 0.4);
+    }
+    .healing-metrics-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .metric-pill {
+      background: rgba(201, 168, 76, 0.15);
+      color: #b8953d;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    /* Compare Matrix Table */
+    .compare-table-wrapper {
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .compare-table th, .compare-table td {
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .compare-table th {
+      background: rgba(201, 168, 76, 0.15);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .compare-table tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    /* Mobile Quick Action Bar & Language Switcher */
+    .mobile-quick-help-bar {
+      display: flex;
+      gap: 10px;
+      margin-top: 1.2rem;
+    }
+    .btn-quick-call, .btn-quick-chat {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .btn-quick-call {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-quick-chat {
+      background: #25d366;
+      color: #ffffff;
+    }
+    .lang-switcher-box {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      margin: 0 2px;
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: var(--primary-dark);
+      border-color: var(--accent);
+      font-weight: 700;
+    }
+
     /* Mobile Bottom Bars */
     .mobile-bottom-nav {
       display: none;
@@ -1661,6 +1951,7 @@
       <div class="section-header reveal">
         <h2>Our Courses</h2>
         <p>Embark on a structured spiritual curriculum. Learn safe, systematic techniques starting from foundational energy scanning up to advanced meditations.</p>
+        <button class="btn btn-secondary" style="margin-top: 1rem; border-color: var(--accent); color: var(--primary);" onclick="openCompareModal()">⚖️ Compare All Courses</button>
       </div>
 
       <!-- Mobile-First Self-Segmenting Filter Chips -->
@@ -1689,6 +1980,29 @@
           </div>
           <h3>Basic Pranic Healing</h3>
           <p class="course-desc">Learn foundational energy scanning, cleansing, and healing techniques.</p>
+
+          <div class="course-urgency-box">
+            <div class="urgency-header">
+              <span>🔥 4 Seats Left in Weekend Batch</span>
+              <span>16/20 Enrolled</span>
+            </div>
+            <div class="urgency-progress-track">
+              <div class="urgency-progress-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+
+          <details class="course-syllabus-details">
+            <summary>
+              <span>View 2-Day Syllabus Highlights</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            </summary>
+            <ul class="course-syllabus-list">
+              <li>Module 1: Principles of Prana & 11 Major Chakras</li>
+              <li>Module 2: Sensitizing Hands to Scan Energy Fields</li>
+              <li>Module 3: Cleansing & Energizing Protocols for Ailments</li>
+            </ul>
+          </details>
+
           <div class="course-footer">
             <div class="course-price">
               <span class="course-price-label">Offer Price</span>
@@ -1697,7 +2011,11 @@
                 <span class="course-price-value">₹4,999</span>
               </div>
             </div>
-            <button class="btn btn-primary" onclick="openCartDrawer('Basic Pranic Healing', 4999, 6999)">Enroll Now</button>
+          </div>
+
+          <div class="course-actions-row">
+            <button class="btn-quick-enroll" onclick="openCartDrawer('Basic Pranic Healing', 4999, 6999)">⚡ Quick Enroll</button>
+            <button class="btn-view-syllabus" onclick="openCompareModal()">📖 Compare</button>
           </div>
         </div>
 
@@ -1717,6 +2035,29 @@
           </div>
           <h3>Advanced Pranic Healing</h3>
           <p class="course-desc">Master colour prana and advanced protocols for accelerated healing.</p>
+
+          <div class="course-urgency-box">
+            <div class="urgency-header">
+              <span>🔥 3 Seats Left in Fast-Track Batch</span>
+              <span>17/20 Enrolled</span>
+            </div>
+            <div class="urgency-progress-track">
+              <div class="urgency-progress-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <details class="course-syllabus-details">
+            <summary>
+              <span>View 2-Day Syllabus Highlights</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            </summary>
+            <ul class="course-syllabus-list">
+              <li>Module 1: Harnessing Colour Pranas (Red, Violet, Gold)</li>
+              <li>Module 2: Advanced Cleansing for Severe Physical Conditions</li>
+              <li>Module 3: Divine Healing & Preventive Energy Hygiene</li>
+            </ul>
+          </details>
+
           <div class="course-footer">
             <div class="course-price">
               <span class="course-price-label">Offer Price</span>
@@ -1725,7 +2066,11 @@
                 <span class="course-price-value">₹6,999</span>
               </div>
             </div>
-            <button class="btn btn-primary" onclick="openCartDrawer('Advanced Pranic Healing', 6999, 9999)">Enroll Now</button>
+          </div>
+
+          <div class="course-actions-row">
+            <button class="btn-quick-enroll" onclick="openCartDrawer('Advanced Pranic Healing', 6999, 9999)">⚡ Quick Enroll</button>
+            <button class="btn-view-syllabus" onclick="openCompareModal()">📖 Compare</button>
           </div>
         </div>
 
@@ -1745,6 +2090,29 @@
           </div>
           <h3>Pranic Psychotherapy</h3>
           <p class="course-desc">Apply energy healing to emotional and psychological conditions.</p>
+
+          <div class="course-urgency-box">
+            <div class="urgency-header">
+              <span>🔥 5 Seats Left in Evening Batch</span>
+              <span>15/20 Enrolled</span>
+            </div>
+            <div class="urgency-progress-track">
+              <div class="urgency-progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <details class="course-syllabus-details">
+            <summary>
+              <span>View 2-Day Syllabus Highlights</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            </summary>
+            <ul class="course-syllabus-list">
+              <li>Module 1: Extracting Negative Traumatic Elementals</li>
+              <li>Module 2: Energy Shielding Against Psychic Contagion</li>
+              <li>Module 3: Treating Phobias, Anxiety & Grief</li>
+            </ul>
+          </details>
+
           <div class="course-footer">
             <div class="course-price">
               <span class="course-price-label">Offer Price</span>
@@ -1753,7 +2121,11 @@
                 <span class="course-price-value">₹7,499</span>
               </div>
             </div>
-            <button class="btn btn-primary" onclick="openCartDrawer('Pranic Psychotherapy', 7499, 10999)">Enroll Now</button>
+          </div>
+
+          <div class="course-actions-row">
+            <button class="btn-quick-enroll" onclick="openCartDrawer('Pranic Psychotherapy', 7499, 10999)">⚡ Quick Enroll</button>
+            <button class="btn-view-syllabus" onclick="openCompareModal()">📖 Compare</button>
           </div>
         </div>
 
@@ -1773,6 +2145,18 @@
           </div>
           <h3>Forgiveness & Inner Peace</h3>
           <p class="course-desc">Release emotional blockages and cultivate deep inner compassion.</p>
+
+          <details class="course-syllabus-details">
+            <summary>
+              <span>View Syllabus Highlights</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            </summary>
+            <ul class="course-syllabus-list">
+              <li>Module 1: Energy Cord Cutting & Release</li>
+              <li>Module 2: Twin Hearts Meditation for Peace</li>
+            </ul>
+          </details>
+
           <div class="course-footer">
             <div class="course-price">
               <span class="course-price-label">Offer Price</span>
@@ -1781,7 +2165,11 @@
                 <span class="course-price-value">₹4,499</span>
               </div>
             </div>
-            <button class="btn btn-primary" onclick="openCartDrawer('Forgiveness & Inner Peace', 4499, 6499)">Enroll Now</button>
+          </div>
+
+          <div class="course-actions-row">
+            <button class="btn-quick-enroll" onclick="openCartDrawer('Forgiveness & Inner Peace', 4499, 6499)">⚡ Quick Enroll</button>
+            <button class="btn-view-syllabus" onclick="openCompareModal()">📖 Compare</button>
           </div>
         </div>
 
@@ -1801,6 +2189,18 @@
           </div>
           <h3>Achieving Oneness</h3>
           <p class="course-desc">Align with your Higher Self through meditation and inner practices.</p>
+
+          <details class="course-syllabus-details">
+            <summary>
+              <span>View Syllabus Highlights</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            </summary>
+            <ul class="course-syllabus-list">
+              <li>Module 1: Soul Realization & Meditation</li>
+              <li>Module 2: Kundalini Safety Protocols</li>
+            </ul>
+          </details>
+
           <div class="course-footer">
             <div class="course-price">
               <span class="course-price-label">Offer Price</span>
@@ -1809,7 +2209,11 @@
                 <span class="course-price-value">₹7,999</span>
               </div>
             </div>
-            <button class="btn btn-primary" onclick="openCartDrawer('Achieving Oneness', 7999, 11999)">Enroll Now</button>
+          </div>
+
+          <div class="course-actions-row">
+            <button class="btn-quick-enroll" onclick="openCartDrawer('Achieving Oneness', 7999, 11999)">⚡ Quick Enroll</button>
+            <button class="btn-view-syllabus" onclick="openCompareModal()">📖 Compare</button>
           </div>
         </div>
 
@@ -1829,6 +2233,18 @@
           </div>
           <h3>Arhatic Yoga</h3>
           <p class="course-desc">An advanced system of meditation, ethics, and energy work for spiritual growth.</p>
+
+          <details class="course-syllabus-details">
+            <summary>
+              <span>View Syllabus Highlights</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+            </summary>
+            <ul class="course-syllabus-list">
+              <li>Module 1: Five Pillars of Arhatic Yoga</li>
+              <li>Module 2: Purification of Physical & Astral Bodies</li>
+            </ul>
+          </details>
+
           <div class="course-footer">
             <div class="course-price">
               <span class="course-price-label">Offer Price</span>
@@ -1837,7 +2253,11 @@
                 <span class="course-price-value">₹8,999</span>
               </div>
             </div>
-            <button class="btn btn-primary" onclick="openCartDrawer('Arhatic Yoga', 8999, 12999)">Enroll Now</button>
+          </div>
+
+          <div class="course-actions-row">
+            <button class="btn-quick-enroll" onclick="openCartDrawer('Arhatic Yoga', 8999, 12999)">⚡ Quick Enroll</button>
+            <button class="btn-view-syllabus" onclick="openCompareModal()">📖 Compare</button>
           </div>
         </div>
       </div>
@@ -1924,18 +2344,40 @@
         <p>Listen to direct personal experiences from graduates who integrated energy healing techniques into their daily routines.</p>
       </div>
 
+      <!-- Testimonials Filter Chips -->
+      <div class="filter-chips-wrapper reveal" id="testimonialFilterChips">
+        <button class="filter-chip active" data-filter="all">✨ All Voices</button>
+        <button class="filter-chip" data-filter="pain">🩹 Pain Relief</button>
+        <button class="filter-chip" data-filter="stress">🧘 Stress & Anxiety</button>
+        <button class="filter-chip" data-filter="relationships">❤️ Relationships</button>
+      </div>
+
       <div class="testimonials-grid">
         <!-- Testimonial 1 -->
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card reveal" data-category="pain">
           <div class="quote-icon">
-            <!-- Quote SVG -->
-            <svg viewBox="0 0 24 24">
-              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
           </div>
           <p class="testimonial-text">"I struggled with chronic migraines for over five years. After applying the basic self-healing techniques I learned here, the frequency of my headaches dropped by 90% in just two weeks. It felt like a miracle."</p>
-          <div class="testimonial-stars">
-            <!-- 5 Stars -->
+          
+          <div class="audio-voice-box">
+            <button class="btn-play-audio" onclick="toggleVoiceAudio(this)" aria-label="Play 60s Voice Note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="audio-waveform-bars">
+              <div class="waveform-bar" style="height: 40%;"></div>
+              <div class="waveform-bar" style="height: 80%;"></div>
+              <div class="waveform-bar" style="height: 100%;"></div>
+              <div class="waveform-bar" style="height: 60%;"></div>
+              <div class="waveform-bar" style="height: 90%;"></div>
+              <div class="waveform-bar" style="height: 50%;"></div>
+              <div class="waveform-bar" style="height: 75%;"></div>
+              <div class="waveform-bar" style="height: 35%;"></div>
+            </div>
+            <span class="audio-duration-text">0:60 Voice Note</span>
+          </div>
+
+          <div class="testimonial-stars" style="margin-top: 10px;">
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -1943,17 +2385,32 @@
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
           <div class="testimonial-author">Priya, Mumbai</div>
+          <span class="verified-student-badge">✔ Verified Graduate</span>
         </div>
 
         <!-- Testimonial 2 -->
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card reveal" data-category="stress">
           <div class="quote-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
           </div>
           <p class="testimonial-text">"As a corporate manager, stress was taking over my life. The meditation techniques and energy cleansing practices have given me a sanctuary of inner peace and clarity."</p>
-          <div class="testimonial-stars">
+          
+          <div class="audio-voice-box">
+            <button class="btn-play-audio" onclick="toggleVoiceAudio(this)" aria-label="Play 45s Voice Note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="audio-waveform-bars">
+              <div class="waveform-bar" style="height: 50%;"></div>
+              <div class="waveform-bar" style="height: 90%;"></div>
+              <div class="waveform-bar" style="height: 60%;"></div>
+              <div class="waveform-bar" style="height: 100%;"></div>
+              <div class="waveform-bar" style="height: 70%;"></div>
+              <div class="waveform-bar" style="height: 40%;"></div>
+            </div>
+            <span class="audio-duration-text">0:45 Voice Note</span>
+          </div>
+
+          <div class="testimonial-stars" style="margin-top: 10px;">
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -1961,14 +2418,13 @@
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
           <div class="testimonial-author">Rajesh, Bengaluru</div>
+          <span class="verified-student-badge">✔ Verified Graduate</span>
         </div>
 
         <!-- Testimonial 3 -->
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card reveal" data-category="relationships">
           <div class="quote-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
-            </svg>
+            <svg viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
           </div>
           <p class="testimonial-text">"Learning the forgiveness meditation completely mended my relationship with my family. The blockages I was carrying for years melted away, leaving only peace and love."</p>
           <div class="testimonial-stars">
@@ -1979,6 +2435,7 @@
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </div>
           <div class="testimonial-author">Ananya, Delhi</div>
+          <span class="verified-student-badge">✔ Verified Graduate</span>
         </div>
       </div>
     </div>
@@ -1996,46 +2453,71 @@
         <!-- Story 1 -->
         <div class="story-card reveal">
           <div class="story-illustration">
-            <!-- Back Pain Relief Icon (Spine/Energy Points) -->
             <svg viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 3" />
-              <!-- Back Silhouette / Spine -->
               <path d="M50 15 C54 30 54 40 50 85 M46 15 C50 30 50 40 46 85" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6" />
-              <!-- Energy Points / Chakras along spine -->
               <circle cx="48" cy="22" r="5" fill="#c9a84c" />
               <circle cx="48" cy="35" r="5" fill="#c9a84c" />
               <circle cx="48" cy="48" r="5" fill="#c9a84c" />
               <circle cx="48" cy="62" r="5" fill="#c9a84c" />
               <circle cx="48" cy="75" r="5" fill="#c9a84c" />
-              <!-- Wave Aura -->
-              <path d="M30 45 C40 40 45 40 48 48 C45 56 40 56 30 51" stroke="#c9a84c" stroke-width="1.5" fill="none" />
-              <path d="M70 45 C60 40 55 40 52 48 C55 56 60 56 70 51" stroke="#c9a84c" stroke-width="1.5" fill="none" />
             </svg>
           </div>
           <div class="story-body">
             <h3>Reclaiming Mobility: How Pranic Healing Relieved Chronic Back Pain</h3>
-            <p>For a decade, chronic lower back pain dictated what I could and couldn't do. Through targeted advanced healing protocols, the energy congestion cleared, and today I am completely pain-free and active again.</p>
-            <a href="#" class="btn btn-secondary" onclick="event.preventDefault();">Read More</a>
+            <p>For a decade, chronic lower back pain dictated what I could and couldn't do. Through targeted advanced healing protocols, energy congestion was systematically cleansed.</p>
+            
+            <div class="aura-comparison-container">
+              <div class="aura-box before">
+                <span>BEFORE</span>
+                <div class="aura-diagram-graphic">⚠️ Congested</div>
+              </div>
+              <div class="aura-box after">
+                <span>AFTER</span>
+                <div class="aura-diagram-graphic">✨ Vibrant</div>
+              </div>
+            </div>
+
+            <div class="healing-metrics-row">
+              <span class="metric-pill">⏱️ 14 Days Recovery</span>
+              <span class="metric-pill">📉 90% Pain Reduction</span>
+              <span class="metric-pill">🌿 100% Non-Touch</span>
+            </div>
+
+            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;" onclick="event.preventDefault();">Read Full Case Study</a>
           </div>
         </div>
 
         <!-- Story 2 -->
         <div class="story-card reveal">
           <div class="story-illustration">
-            <!-- Mental Balance / Relationship Icon -->
             <svg viewBox="0 0 100 100">
               <circle cx="50" cy="50" r="45" fill="none" stroke="#c9a84c" stroke-width="1" stroke-dasharray="3 3" />
-              <!-- Two profiles / figures connected -->
               <path d="M35 70 C35 55 42 50 45 45 C42 43 40 40 40 35 C40 28 45 25 50 25 C55 25 60 28 60 35 C60 40 58 43 55 45 C58 50 65 55 65 70" fill="none" stroke="#ffffff" stroke-width="2" />
-              <!-- Lotus/Heart blooming in the center -->
               <path d="M50 38 C51 43 53 45 57 45 C53 45 51 47 50 52 C49 47 47 45 43 45 C47 45 49 43 50 38 Z" fill="#c9a84c" />
-              <circle cx="50" cy="45" r="12" stroke="#c9a84c" stroke-width="1" fill="none" stroke-dasharray="2 1" />
             </svg>
           </div>
           <div class="story-body">
             <h3>From Panic to Peace: A Journey of Emotional and Relational Healing</h3>
-            <p>Severe anxiety was destroying my personal and professional life. The psychological protocols and meditation alignment restored my emotional balance, transforming how I connect with myself and others.</p>
-            <a href="#" class="btn btn-secondary" onclick="event.preventDefault();">Read More</a>
+            <p>Severe anxiety was destroying my personal and professional life. The psychological protocols and meditation alignment restored emotional balance.</p>
+            
+            <div class="aura-comparison-container">
+              <div class="aura-box before">
+                <span>BEFORE</span>
+                <div class="aura-diagram-graphic">🌀 Agitated</div>
+              </div>
+              <div class="aura-box after">
+                <span>AFTER</span>
+                <div class="aura-diagram-graphic">🕊️ Serene</div>
+              </div>
+            </div>
+
+            <div class="healing-metrics-row">
+              <span class="metric-pill">🧘 3 Weeks Alignment</span>
+              <span class="metric-pill">🛡️ Zero Anxiety Attacks</span>
+            </div>
+
+            <a href="#" class="btn btn-secondary" style="margin-top: 1rem;" onclick="event.preventDefault();">Read Full Case Study</a>
           </div>
         </div>
       </div>
@@ -2398,6 +2880,79 @@
     </div>
   </div>
 
+  <!-- Course Comparison Matrix Modal -->
+  <div class="modal-overlay" id="compareCoursesModal" onclick="closeCompareModal(event)">
+    <div class="modal-content" style="max-width: 720px; text-align: left;" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="color: var(--primary); margin: 0;">⚖️ Compare Pranic Healing Courses</h3>
+        <button onclick="closeCompareModal(event)" style="background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">Compare curriculum levels, prerequisites, and certifications side-by-side.</p>
+      
+      <div class="compare-table-wrapper">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Basic Level</th>
+              <th>Advanced Level</th>
+              <th>Psychotherapy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Duration</strong></td>
+              <td>2 Days (16 Hrs)</td>
+              <td>2 Days (16 Hrs)</td>
+              <td>2 Days (16 Hrs)</td>
+            </tr>
+            <tr>
+              <td><strong>Prerequisites</strong></td>
+              <td>None (Open to All)</td>
+              <td>Basic Pranic Healing</td>
+              <td>Advanced Pranic Healing</td>
+            </tr>
+            <tr>
+              <td><strong>Core Focus</strong></td>
+              <td>Energy Scanning, White Prana Cleansing</td>
+              <td>Color Pranas (Red, Violet, Gold), Rapid Healing</td>
+              <td>Trauma Elemental Removal, Psychic Shielding</td>
+            </tr>
+            <tr>
+              <td><strong>Certification</strong></td>
+              <td>IIS International Certificate</td>
+              <td>IIS Advanced Certificate</td>
+              <td>IIS Psychotherapy Certificate</td>
+            </tr>
+            <tr>
+              <td><strong>Enrolment Fee</strong></td>
+              <td><strong style="color: var(--accent);">₹4,999</strong> <span style="text-decoration: line-through; opacity: 0.6; font-size: 0.75rem;">₹6,999</span></td>
+              <td><strong style="color: var(--accent);">₹6,999</strong> <span style="text-decoration: line-through; opacity: 0.6; font-size: 0.75rem;">₹9,999</span></td>
+              <td><strong style="color: var(--accent);">₹7,499</strong> <span style="text-decoration: line-through; opacity: 0.6; font-size: 0.75rem;">₹10,999</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 1.5rem; text-align: right;">
+        <button class="btn btn-primary" onclick="closeCompareModal(event); openCartDrawer('Basic Pranic Healing', 4999, 6999);">Enroll in Basic Level</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Resource Modal -->
+  <div class="modal-overlay" id="videoResourceModal" onclick="closeVideoModal(event)">
+    <div class="modal-content" style="max-width: 640px; padding: 1.5rem;" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h4 id="videoModalTitle" style="color: var(--primary); margin: 0; font-size: 1.1rem;">🎥 Video Lesson</h4>
+        <button onclick="closeVideoModal(event)" style="background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; background: #000;">
+        <iframe id="videoIframe" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Video Lesson" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
   <script>
     // 1. Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -2431,8 +2986,8 @@
       }
     });
 
-    // 3. Filter Chips Logic (Mobile-first self-segmenting)
-    const filterChips = document.querySelectorAll('.filter-chip');
+    // 3. Filter Chips Logic (Courses)
+    const filterChips = document.querySelectorAll('#courseFilterChips .filter-chip');
     const courseCards = document.querySelectorAll('.course-card');
 
     filterChips.forEach(chip => {
@@ -2442,6 +2997,27 @@
 
         const filterVal = chip.getAttribute('data-filter');
         courseCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterVal === 'all' || category === filterVal) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Testimonial Filter Chips
+    const testimonialChips = document.querySelectorAll('#testimonialFilterChips .filter-chip');
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+    testimonialChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        testimonialChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        const filterVal = chip.getAttribute('data-filter');
+        testimonialCards.forEach(card => {
           const category = card.getAttribute('data-category');
           if (filterVal === 'all' || category === filterVal) {
             card.style.display = 'flex';
@@ -2509,6 +3085,67 @@
       const successModal = document.getElementById('successModal');
       successModal.classList.add('active');
       document.body.style.overflow = 'hidden';
+    }
+
+    // Modal Triggers for Compare & Video
+    function openCompareModal() {
+      const m = document.getElementById('compareCoursesModal');
+      if (m) {
+        m.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeCompareModal(e) {
+      if (e) e.stopPropagation();
+      const m = document.getElementById('compareCoursesModal');
+      if (m) {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function openVideoResourceModal(title) {
+      const m = document.getElementById('videoResourceModal');
+      if (m) {
+        document.getElementById('videoModalTitle').textContent = title || '🎥 Video Lesson';
+        m.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeVideoModal(e) {
+      if (e) e.stopPropagation();
+      const m = document.getElementById('videoResourceModal');
+      if (m) {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Voice Note Player Toggle
+    function toggleVoiceAudio(btn) {
+      const isPlaying = btn.classList.contains('playing');
+      document.querySelectorAll('.btn-play-audio').forEach(b => {
+        b.classList.remove('playing');
+        b.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>';
+      });
+
+      if (!isPlaying) {
+        btn.classList.add('playing');
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+      }
+    }
+
+    // Language Switcher
+    function setLanguage(btn, lang) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (lang === 'hi') {
+        alert('भाषा हिंदी में बदली गई! (Demo language switch triggered)');
+      } else {
+        alert('Language set to English!');
+      }
     }
 
     // 5. Mobile Accordion Toggle
