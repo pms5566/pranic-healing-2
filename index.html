@@ -1689,6 +1689,60 @@
       }
     }
 
+    .quiz-banner-pill {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 24px;
+      padding: 10px 20px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1rem;
+      box-shadow: 0 4px 14px rgba(59, 31, 110, 0.2);
+      transition: var(--transition);
+    }
+    .quiz-banner-pill:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(201, 168, 76, 0.3);
+    }
+    .view-mode-switcher {
+      display: flex;
+      gap: 6px;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .view-mode-btn {
+      background: #ffffff;
+      border: 1px solid rgba(59, 31, 110, 0.15);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .view-mode-btn.active {
+      background: var(--primary);
+      color: var(--accent);
+      border-color: var(--primary);
+    }
+    .mobile-batch-timer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(201, 168, 76, 0.15);
+      color: #8c6a17;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 10px;
+    }
+
     /* 3. Mobile Devices (320px to 768px) */
     @media (max-width: 768px) {
       body {
@@ -1709,9 +1763,44 @@
       }
 
       .courses-grid {
-        grid-template-columns: 1fr;
-        max-width: 440px;
-        margin: 0 auto;
+        display: flex !important;
+        overflow-x: auto !important;
+        gap: 1.2rem !important;
+        padding: 0.5rem 0 1.5rem 0 !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+      .courses-grid::-webkit-scrollbar {
+        display: none;
+      }
+      .courses-grid .course-card {
+        flex: 0 0 85vw !important;
+        max-width: 340px !important;
+        scroll-snap-align: center !important;
+      }
+
+      /* Compact Mode on Mobile */
+      .courses-grid.compact-mode {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.8rem !important;
+        overflow: visible !important;
+      }
+      .courses-grid.compact-mode .course-card {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+        padding: 1rem 1.2rem !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
+      .courses-grid.compact-mode .course-urgency-box,
+      .courses-grid.compact-mode .course-syllabus-details,
+      .courses-grid.compact-mode .course-desc,
+      .courses-grid.compact-mode .course-icon-wrapper {
+        display: none !important;
       }
       .testimonials-grid {
         display: flex;
@@ -1951,7 +2040,16 @@
       <div class="section-header reveal">
         <h2>Our Courses</h2>
         <p>Embark on a structured spiritual curriculum. Learn safe, systematic techniques starting from foundational energy scanning up to advanced meditations.</p>
-        <button class="btn btn-secondary" style="margin-top: 1rem; border-color: var(--accent); color: var(--primary);" onclick="openCompareModal()">⚖️ Compare All Courses</button>
+        
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+          <button class="btn btn-secondary" style="border-color: var(--accent); color: var(--primary);" onclick="openCompareModal()">⚖️ Compare All Courses</button>
+          <div class="quiz-banner-pill" onclick="openLevelQuizModal()">✨ Not Sure? Take 15-sec Quiz &rarr;</div>
+        </div>
+
+        <div class="view-mode-switcher">
+          <button class="view-mode-btn active" id="viewModeCards" onclick="setCourseViewMode('cards')">📋 Cards View</button>
+          <button class="view-mode-btn" id="viewModeList" onclick="setCourseViewMode('list')">📱 Compact View</button>
+        </div>
       </div>
 
       <!-- Mobile-First Self-Segmenting Filter Chips -->
@@ -2953,6 +3051,25 @@
     </div>
   </div>
 
+  <!-- 15-Sec Level Finder Quiz Modal -->
+  <div class="modal-overlay" id="levelQuizModal" onclick="closeLevelQuizModal(event)">
+    <div class="modal-content" style="max-width: 480px; text-align: left;" onclick="event.stopPropagation()">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="color: var(--primary); margin: 0; font-size: 1.15rem;">✨ Find Your Pranic Healing Level</h3>
+        <button onclick="closeLevelQuizModal(event)" style="background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.2rem;">Answer 1 quick question to discover your ideal starting module:</p>
+
+      <label style="font-weight: 700; color: var(--primary); font-size: 0.9rem; display: block; margin-bottom: 0.6rem;">What is your primary healing goal?</label>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <button class="btn" style="text-align: left; background: var(--bg-warm); color: var(--primary); border: 1px solid rgba(59,31,110,0.15); padding: 10px 14px; font-size: 0.88rem; border-radius: 8px; cursor: pointer;" onclick="selectQuizOption(this, 'basic')">🌱 Physical Pain Relief & Self-Healing (Beginner)</button>
+        <button class="btn" style="text-align: left; background: var(--bg-warm); color: var(--primary); border: 1px solid rgba(59,31,110,0.15); padding: 10px 14px; font-size: 0.88rem; border-radius: 8px; cursor: pointer;" onclick="selectQuizOption(this, 'advanced')">🔥 Severe Ailments & Rapid Healing (Advanced)</button>
+        <button class="btn" style="text-align: left; background: var(--bg-warm); color: var(--primary); border: 1px solid rgba(59,31,110,0.15); padding: 10px 14px; font-size: 0.88rem; border-radius: 8px; cursor: pointer;" onclick="selectQuizOption(this, 'psychotherapy')">🛡️ Emotional Trauma & Anxiety Relief (Psychotherapy)</button>
+        <button class="btn" style="text-align: left; background: var(--bg-warm); color: var(--primary); border: 1px solid rgba(59,31,110,0.15); padding: 10px 14px; font-size: 0.88rem; border-radius: 8px; cursor: pointer;" onclick="selectQuizOption(this, 'meditation')">🧘 Spiritual Meditation & Soul Alignment</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // 1. Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -3121,6 +3238,80 @@
         m.classList.remove('active');
         document.body.style.overflow = '';
       }
+    }
+
+    // Level Quiz Modal Handlers
+    function openLevelQuizModal() {
+      const m = document.getElementById('levelQuizModal');
+      if (m) {
+        m.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLevelQuizModal(e) {
+      if (e) e.stopPropagation();
+      const m = document.getElementById('levelQuizModal');
+      if (m) {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function selectQuizOption(btn, category) {
+      closeLevelQuizModal();
+      // Filter course list to selected category
+      const targetChip = document.querySelector(`#courseFilterChips .filter-chip[data-filter="${category}"]`);
+      if (targetChip) {
+        targetChip.click();
+      }
+      const coursesSec = document.getElementById('courses');
+      if (coursesSec) {
+        coursesSec.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // View Mode Switcher (Cards vs Compact List)
+    function setCourseViewMode(mode) {
+      const grid = document.querySelector('.courses-grid');
+      const btnCards = document.getElementById('viewModeCards');
+      const btnList = document.getElementById('viewModeList');
+
+      if (mode === 'list') {
+        grid.classList.add('compact-mode');
+        btnCards.classList.remove('active');
+        btnList.classList.add('active');
+      } else {
+        grid.classList.remove('compact-mode');
+        btnList.classList.remove('active');
+        btnCards.classList.add('active');
+      }
+    }
+
+    // Sync Mobile Sticky CTA with visible swiped course card
+    if ('IntersectionObserver' in window && window.innerWidth <= 768) {
+      const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const card = entry.target;
+            const title = card.querySelector('h3') ? card.querySelector('h3').textContent : 'Basic Pranic Healing';
+            const price = card.querySelector('.course-price-value') ? card.querySelector('.course-price-value').textContent : '₹4,999';
+            const mrp = card.querySelector('.course-mrp') ? card.querySelector('.course-mrp').textContent : '₹6,999';
+
+            document.getElementById('stickyCtaMrp').textContent = mrp;
+            document.getElementById('stickyCtaPrice').textContent = price;
+            
+            const btnEnroll = document.querySelector('#mobileStickyCta button');
+            if (btnEnroll) {
+              const numPrice = parseInt(price.replace(/[^0-9]/g, '')) || 4999;
+              const numMrp = parseInt(mrp.replace(/[^0-9]/g, '')) || 6999;
+              btnEnroll.setAttribute('onclick', `openCartDrawer('${title}', ${numPrice}, ${numMrp})`);
+            }
+          }
+        });
+      }, { threshold: 0.6 });
+
+      document.querySelectorAll('.course-card').forEach(c => cardObserver.observe(c));
     }
 
     // Voice Note Player Toggle
