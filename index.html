@@ -1013,70 +1013,94 @@
       margin-bottom: 1rem;
     }
 
-    /* Footer */
+    /* Footer Styling */
     .footer {
       background-color: var(--primary-dark);
       color: #ffffff;
-      padding: 4rem 0 2rem 0;
+      padding: 4rem 0 2.5rem 0;
       border-top: 2px solid var(--accent);
     }
     .footer-grid {
       display: grid;
       grid-template-columns: 1.2fr 1.5fr 1.2fr 1fr;
       gap: 2.5rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2.5rem;
     }
     .footer-about .logo {
-      color: #fff;
+      color: #ffffff;
     }
     .footer-about p {
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.85);
       font-size: 0.9rem;
       margin-top: 1rem;
+      line-height: 1.6;
     }
     .footer-links-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.8rem;
       list-style: none;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
     .footer-links-grid a {
-      color: rgba(255, 255, 255, 0.75);
+      color: rgba(255, 255, 255, 0.85);
       font-size: 0.88rem;
     }
     .footer-links-grid a:hover {
       color: var(--accent);
+      padding-left: 4px;
+    }
+    .grievance-box {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 0.5rem;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.88);
+    }
+    .grievance-box p {
+      margin-bottom: 3px;
+      color: rgba(255, 255, 255, 0.88) !important;
+    }
+    .grievance-box strong {
+      color: var(--accent) !important;
     }
     .social-icons-row {
       display: flex;
       gap: 0.8rem;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
     .social-link {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .social-link:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
+      border-color: var(--accent);
+      transform: translateY(-3px);
     }
     .social-link svg {
-      width: 18px;
-      height: 18px;
+      width: 18px !important;
+      height: 18px !important;
       fill: currentColor;
     }
     .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       padding-top: 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.85rem;
     }
 
     /* Floating Action & Modals */
