@@ -2033,13 +2033,25 @@
       .menu-toggle {
         display: flex;
       }
+      .header.menu-open {
+        background: linear-gradient(180deg, rgba(39, 20, 75, 0.99), rgba(26, 12, 52, 0.99)) !important;
+        border-bottom: 2px solid var(--accent) !important;
+      }
+      .header.menu-open .logo {
+        color: #ffffff !important;
+      }
+      .header.menu-open .cart-header-btn {
+        background: rgba(201, 168, 76, 0.15) !important;
+        color: var(--accent) !important;
+        border-color: var(--accent) !important;
+      }
       .nav-links {
         position: fixed;
         top: calc(var(--urgency-bar-height) + var(--header-height));
         left: 0;
         width: 100%;
-        height: calc(100vh - var(--urgency-bar-height) - var(--header-height));
-        background: linear-gradient(180deg, rgba(39, 20, 75, 0.98), rgba(26, 12, 52, 0.99)) !important;
+        height: calc(100dvh - var(--urgency-bar-height) - var(--header-height));
+        background: linear-gradient(180deg, rgba(39, 20, 75, 0.99), rgba(26, 12, 52, 0.99)) !important;
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
         flex-direction: column !important;
@@ -2054,11 +2066,11 @@
         transform: translateY(-10px);
         transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         overflow-y: auto;
-        z-index: 1000;
+        z-index: 9999 !important;
       }
       .header.scrolled .nav-links {
         top: var(--header-height);
-        height: calc(100vh - var(--header-height));
+        height: calc(100dvh - var(--header-height));
       }
       .nav-links.active {
         opacity: 1 !important;
@@ -3873,9 +3885,11 @@
       if (e && e.stopPropagation) e.stopPropagation();
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
+      const header = document.getElementById('header');
       if (menuToggle && navLinks) {
         menuToggle.classList.toggle('active');
         navLinks.classList.toggle('active');
+        if (header) header.classList.toggle('menu-open');
       }
     }
 
