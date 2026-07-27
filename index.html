@@ -534,10 +534,13 @@
     }
     .avatar-bg-glow {
       position: absolute;
-      inset: -10px;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
+      top: 50%;
+      left: 50%;
+      width: calc(100% + 30px);
+      height: calc(100% + 30px);
+      transform: translate(-50%, -50%);
       animation: rotateSlow 60s linear infinite;
+      pointer-events: none;
     }
     .avatar-figure {
       width: 100%;
@@ -2224,10 +2227,16 @@
       }
       .instructor-media {
         order: -1;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding: 1rem 0;
       }
       .instructor-avatar-container {
-        width: 220px;
-        height: 220px;
+        width: 190px;
+        height: 190px;
+        margin: 0 auto;
+        position: relative;
       }
       .stories-grid {
         grid-template-columns: 1fr;
