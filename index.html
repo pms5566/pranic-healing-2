@@ -1177,6 +1177,74 @@
       transform: translateX(0);
     }
 
+    /* Cart Drawer Enhancements */
+    .batch-date-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59, 31, 110, 0.08);
+      color: var(--primary);
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-top: 4px;
+    }
+    .savings-badge-pill {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      border: 1px solid var(--accent);
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .coupon-chips-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 8px 0 12px 0;
+    }
+    .coupon-chip {
+      background: rgba(201, 168, 76, 0.15);
+      color: #8c6a17;
+      border: 1px dashed #c9a84c;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .coupon-chip:hover {
+      background: var(--accent);
+      color: var(--primary-dark);
+    }
+    .cart-trust-box {
+      background: rgba(26, 122, 74, 0.08);
+      color: #1a7a4a;
+      border: 1px solid rgba(26, 122, 74, 0.2);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 1rem 0;
+    }
+    .drawer-timer-banner {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
     /* Modal Overlay Styling */
     .modal-overlay {
       position: fixed;
@@ -3218,8 +3286,15 @@
 
       <div class="drawer-body">
         <div class="checkout-course-summary">
-          <h4 id="drawerCourseName" style="color: var(--primary); font-size: 1.1rem; margin-bottom: 4px;">Basic Pranic Healing</h4>
-          <p style="font-size: 0.82rem; color: var(--text-muted);">Includes certification, live webinar access & study material</p>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
+            <div>
+              <h4 id="drawerCourseName" style="color: var(--primary); font-size: 1.15rem; margin-bottom: 2px;">Basic Pranic Healing</h4>
+              <span class="batch-date-pill">📅 Next Cohort: Aug 5 - Aug 7, 2026</span>
+            </div>
+            <span class="savings-badge-pill" id="drawerSavingsPill">🎉 You Save ₹2,000</span>
+          </div>
+
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 6px;">Includes IIS Certification, live webinar access & physical study guide kit.</p>
           
           <div class="price-breakdown">
             <div class="price-row">
@@ -3241,16 +3316,23 @@
           </div>
         </div>
 
+        <!-- 1-Tap Coupon Code Chips -->
+        <label style="font-size: 0.8rem; font-weight: 700; color: var(--primary); display: block; margin-top: 10px;">Available Promo Coupons:</label>
+        <div class="coupon-chips-row">
+          <span class="coupon-chip" onclick="applyCouponChip('HEAL2026')">🏷️ HEAL2026 (-₹1,000)</span>
+          <span class="coupon-chip" onclick="applyCouponChip('EARLY2026')">🏷️ EARLY2026 (-₹1,000)</span>
+        </div>
+
         <div class="coupon-box">
-          <input type="text" id="couponInput" placeholder="Enter Promo Code (e.g. HEAL2026)" uppercase>
+          <input type="text" id="couponInput" placeholder="Enter Promo Code (e.g. HEAL2026)">
           <button type="button" onclick="applyCoupon()">Apply</button>
         </div>
         <p id="couponMsg" style="font-size: 0.78rem; margin-bottom: 1rem; color: var(--success); display: none;">✓ Promo code HEAL2026 applied successfully!</p>
 
-        <h4 style="color: var(--primary); font-size: 0.95rem; margin-bottom: 8px;">Select Payment Option</h4>
+        <h4 style="color: var(--primary); font-size: 0.95rem; margin-bottom: 8px;">Select Payment Gateway</h4>
         <div class="payment-options-grid">
           <div class="payment-opt-card selected" onclick="selectPaymentOpt(this)">
-            <span>🇮🇳 UPI / GPay</span>
+            <span>🇮🇳 UPI / GPay / PhonePe</span>
           </div>
           <div class="payment-opt-card" onclick="selectPaymentOpt(this)">
             <span>💳 Cards / NetBanking</span>
@@ -3259,11 +3341,15 @@
             <span>💼 Paytm / Wallets</span>
           </div>
           <div class="payment-opt-card" onclick="selectPaymentOpt(this)">
-            <span>🤝 Cash on Delivery / Pay Later</span>
+            <span>📦 Pay Later / EMI</span>
           </div>
         </div>
 
-        <h4 style="color: var(--primary); font-size: 0.95rem; margin-top: 1rem; margin-bottom: 8px;">Fast Guest Enrolment</h4>
+        <div class="cart-trust-box">
+          🛡️ 100% Money-Back Guarantee (7 Days) &nbsp;•&nbsp; 📜 Official IIS Certificate
+        </div>
+
+        <h4 style="color: var(--primary); font-size: 0.95rem; margin-top: 0.8rem; margin-bottom: 8px;">Fast Student Registration</h4>
         <form id="drawerCheckoutForm" onsubmit="completeCheckout(event)">
           <div style="margin-bottom: 10px;">
             <input type="text" class="form-control" placeholder="Full Name" required autocomplete="name" style="width: 100%; padding: 10px 14px; border: 1.5px solid rgba(59, 31, 110, 0.15); border-radius: 8px;">
@@ -3275,7 +3361,11 @@
             <input type="tel" inputmode="numeric" class="form-control" placeholder="Mobile Number (+91)" required autocomplete="tel" style="width: 100%; padding: 10px 14px; border: 1.5px solid rgba(59, 31, 110, 0.15); border-radius: 8px;">
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 48px; font-size: 1rem;">Complete Enrolment & Pay Now</button>
+          <div class="drawer-timer-banner">
+            ⏰ Offer Price Reserved for <span id="cartCountdownTimer">14:59</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; min-height: 48px; font-size: 0.98rem; font-weight: 700;">🔒 Proceed to Secure Payment (<span id="btnPayNowAmount">₹4,999</span>) →</button>
         </form>
       </div>
     </div>
@@ -3496,21 +3586,33 @@
     let activeMrp = 6999;
     let appliedCoupon = false;
 
+    let cartTimerInterval = null;
+
     function openCartDrawer(courseName, price, mrp) {
       activePrice = price;
       activeMrp = mrp;
       appliedCoupon = false;
 
+      const savings = Math.max(0, mrp - price);
       document.getElementById('drawerCourseName').textContent = courseName;
       document.getElementById('drawerMrp').textContent = '₹' + mrp.toLocaleString('en-IN');
-      document.getElementById('drawerDiscount').textContent = '- ₹' + (mrp - price).toLocaleString('en-IN');
+      document.getElementById('drawerDiscount').textContent = '- ₹' + savings.toLocaleString('en-IN');
       document.getElementById('drawerFinalTotal').textContent = '₹' + price.toLocaleString('en-IN');
+      
+      const savingsPill = document.getElementById('drawerSavingsPill');
+      if (savingsPill) savingsPill.textContent = `🎉 You Save ₹${savings.toLocaleString('en-IN')}`;
+      
+      const btnPayAmount = document.getElementById('btnPayNowAmount');
+      if (btnPayAmount) btnPayAmount.textContent = '₹' + price.toLocaleString('en-IN');
 
       document.getElementById('stickyCtaMrp').textContent = '₹' + mrp.toLocaleString('en-IN');
       document.getElementById('stickyCtaPrice').textContent = '₹' + price.toLocaleString('en-IN');
 
       document.getElementById('couponRow').style.display = 'none';
       document.getElementById('couponMsg').style.display = 'none';
+      document.getElementById('couponInput').value = '';
+
+      startCartTimer();
 
       document.getElementById('drawerOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
@@ -3520,6 +3622,12 @@
       if (e) e.preventDefault();
       document.getElementById('drawerOverlay').classList.remove('active');
       document.body.style.overflow = '';
+      if (cartTimerInterval) clearInterval(cartTimerInterval);
+    }
+
+    function applyCouponChip(code) {
+      document.getElementById('couponInput').value = code;
+      applyCoupon();
     }
 
     function applyCoupon() {
@@ -3528,13 +3636,39 @@
         appliedCoupon = true;
         const discountVal = 1000;
         const finalPrice = Math.max(0, activePrice - discountVal);
+        const totalSavings = (activeMrp - activePrice) + discountVal;
+
         document.getElementById('couponRow').style.display = 'flex';
         document.getElementById('couponDiscount').textContent = '- ₹' + discountVal.toLocaleString('en-IN');
         document.getElementById('drawerFinalTotal').textContent = '₹' + finalPrice.toLocaleString('en-IN');
+        
+        const savingsPill = document.getElementById('drawerSavingsPill');
+        if (savingsPill) savingsPill.textContent = `🎉 Total Savings: ₹${totalSavings.toLocaleString('en-IN')}`;
+
+        const btnPayAmount = document.getElementById('btnPayNowAmount');
+        if (btnPayAmount) btnPayAmount.textContent = '₹' + finalPrice.toLocaleString('en-IN');
+
         document.getElementById('couponMsg').style.display = 'block';
       } else {
-        alert('Invalid Coupon Code. Try HEAL2026');
+        alert('Invalid Coupon Code. Try HEAL2026 or EARLY2026');
       }
+    }
+
+    function startCartTimer() {
+      if (cartTimerInterval) clearInterval(cartTimerInterval);
+      let timer = 14 * 60 + 59; // 14 mins 59 secs
+      const timerEl = document.getElementById('cartCountdownTimer');
+      
+      cartTimerInterval = setInterval(() => {
+        const mins = Math.floor(timer / 60);
+        const secs = timer % 60;
+        if (timerEl) {
+          timerEl.textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+        if (--timer < 0) {
+          clearInterval(cartTimerInterval);
+        }
+      }, 1000);
     }
 
     function selectPaymentOpt(el) {
