@@ -189,7 +189,6 @@
       left: 0;
       width: 100%;
       max-width: 100vw !important;
-      overflow: hidden !important;
       height: var(--header-height);
       z-index: 1000;
       background: rgba(250, 247, 242, 0.95);
@@ -2040,19 +2039,20 @@
         left: 0;
         width: 100%;
         height: calc(100vh - var(--urgency-bar-height) - var(--header-height));
-        background: linear-gradient(180deg, rgba(39, 20, 75, 0.98), rgba(26, 12, 52, 0.99));
+        background: linear-gradient(180deg, rgba(39, 20, 75, 0.98), rgba(26, 12, 52, 0.99)) !important;
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
-        flex-direction: column;
-        justify-content: flex-start;
-        gap: 0;
-        padding: 1.5rem 1.2rem 2.5rem 1.2rem;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+        padding: 1.5rem 1.2rem 2.5rem 1.2rem !important;
         box-shadow: var(--shadow-lg);
         border-bottom: 2px solid var(--accent);
         opacity: 0;
         visibility: hidden;
+        pointer-events: none;
         transform: translateY(-10px);
-        transition: var(--transition);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
         overflow-y: auto;
         z-index: 1000;
       }
@@ -2061,9 +2061,11 @@
         height: calc(100vh - var(--header-height));
       }
       .nav-links.active {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        transform: translateY(0) !important;
+        display: flex !important;
       }
       .nav-links li {
         width: 100%;
